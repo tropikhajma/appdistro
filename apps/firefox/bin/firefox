@@ -1,0 +1,10 @@
+#!/bin/bash
+sudo docker stop firefoxhajma
+sudo docker rm firefoxhajma
+sudo docker run -d --name firefoxhajma -p 8080:8080 -p 10000:10000 firefox
+while [ "`sudo docker logs firefoxhajma 2>&1|grep running|wc -l`" == "0" ]; do
+	sleep 0.1
+done
+xpra attach --encoding=rgb --border=red tcp:localhost:10000
+sudo docker rm firefoxhajma
+

@@ -1,0 +1,5 @@
+Cmnd_Alias FIREFOX = /usr/bin/docker run -d --name firefoxhajma -p 8080\:8080 -p 10000\:10000 firefox
+hajma	ALL = (root) NOPASSWD: FIREFOX
+hajma	ALL = (root) NOPASSWD: /usr/bin/docker rm firefoxhajma
+hajma	ALL = (root) NOPASSWD: /usr/bin/docker logs firefoxhajma
+hajma	ALL = (root) NOPASSWD: /usr/bin/docker stop firefoxhajma
