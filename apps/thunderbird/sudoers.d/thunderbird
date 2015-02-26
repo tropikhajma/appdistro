@@ -1,0 +1,5 @@
+Cmnd_Alias THUNDERBIRD = /usr/bin/docker run -d --name thunderbird -p 10001\:10000 -v /home/hajma/.icedove\:/home/xpra/.thunderbird -v /home/hajma/ns_imap\:/home/xpra/ns_imap  -v /home/hajma/Mail\:/home/xpra/Mail thunderbird
+hajma	ALL = (root) NOPASSWD: THUNDERBIRD
+hajma	ALL = (root) NOPASSWD: /usr/bin/docker rm thunderbird
+hajma	ALL = (root) NOPASSWD: /usr/bin/docker logs thunderbird
+hajma	ALL = (root) NOPASSWD: /usr/bin/docker stop thunderbird

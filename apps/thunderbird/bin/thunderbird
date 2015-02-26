@@ -1,0 +1,12 @@
+#!/bin/bash
+appname=thunderbird
+localport=10001
+sudo docker stop $appname
+sudo docker rm $appname
+sudo docker run -d --name $appname -p $localport:10000 -v /home/hajma/.icedove:/home/xpra/.thunderbird -v /home/hajma/ns_imap:/home/xpra/ns_imap  -v /home/hajma/Mail:/home/xpra/Mail $appname
+while [ "`sudo docker logs $appname 2>&1|grep running|wc -l`" == "0" ]; do
+	sleep 0.1
+done
+xpra attach --encoding=rgb --border=red tcp:localhost:$localport
+sudo docker rm $appname
+
